@@ -3,17 +3,17 @@
            https://api.github.com/users/<your name>*/
 
            const entryPointInHTML = document.querySelector(".cards");
-           const getPromise = axios.get("https://api.github.com/users/ballewaer");
+           const getPromise = axios.get("https://api.github.com/users/ballewaer")
 
-  getPromise
-  .then(response => {
-    console.log(response.data);
-    const myData = createCard(response.data);
-    entryPointInHTML.appendChild(myData);
-  })
-  .catch(error => {
-    console.log("SORRY! Nothing to see here!", error);
-  });
+           getPromise
+           .then(response => {
+             console.log(response.data);
+             const myData = createCard(response.data);
+             entryPointInHTML.appendChild(myData);
+           })
+           .catch(error => {
+            console.log("Oops! No info found.", error);
+          });;
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -92,6 +92,16 @@
     "https://api.github.com/users/desicurry"
 ];
 
+// getFollowers.then(response => {
+//   const fArray = response.data;
+//   fArray.forEach(e => {
+//     followersArray.push(e);
+//   });
+//   // console.log(followersArray[0]);
+//   // console.log(followersArray);
+//   // const myData = createCard(response.data);
+//   // entryPointInHTML.appendChild(myData);
+// }); 
 
 followersArray.map(element => {
   axios
@@ -102,6 +112,6 @@ followersArray.map(element => {
       entryPointInHTML.appendChild(followersData(response.data));
     })
     .catch(error => {
-      console.log("SORRY! Nothing to see here!", error);
+      console.log("Oops! No info found.", error);
     });
 });
