@@ -5,6 +5,10 @@
            const entryPointInHTML = document.querySelector(".cards");
            const getPromise = axios.get("https://api.github.com/users/ballewaer")
 
+          //  const getFollowers = axios.get(
+          //   "https://api.github.com/users/ballewaer/followers"
+          //  );
+
            getPromise
            .then(response => {
              console.log(response.data);
@@ -12,7 +16,7 @@
              entryPointInHTML.appendChild(myData);
            })
            .catch(error => {
-            console.log("Oops! No info found.", error);
+            console.log("Oops! The page you were searching for could not be found!.", error);
           });;
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -35,7 +39,6 @@
           
           Using that array, iterate over it, requesting data for each user, creating a new card for each
           user, and adding that card to the DOM.*/
-
 
           //CREATING ELEMENTS HERE\\
           function createCard(info) {
@@ -92,16 +95,16 @@
     "https://api.github.com/users/desicurry"
 ];
 
-// getFollowers.then(response => {
-//   const fArray = response.data;
-//   fArray.forEach(e => {
-//     followersArray.push(e);
-//   });
-//   // console.log(followersArray[0]);
-//   // console.log(followersArray);
-//   // const myData = createCard(response.data);
-//   // entryPointInHTML.appendChild(myData);
-// }); 
+getFollowers.then(response => {
+  const fArray = response.data;
+  fArray.forEach(e => {
+    followersArray.push(e);
+  });
+  console.log(followersArray[0]);
+  console.log(followersArray);
+  const myData = createCard(response.data);
+  entryPointInHTML.appendChild(myData);
+}); 
 
 followersArray.map(element => {
   axios
@@ -112,6 +115,6 @@ followersArray.map(element => {
       entryPointInHTML.appendChild(followersData(response.data));
     })
     .catch(error => {
-      console.log("Oops! No info found.", error);
+      console.log("Oops! The page you were searching for could not be found!.", error);
     });
 });
