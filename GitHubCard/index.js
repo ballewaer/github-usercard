@@ -95,16 +95,17 @@
     "https://api.github.com/users/desicurry"
 ];
 
-getFollowers.then(response => {
-  const fArray = response.data;
-  fArray.forEach(e => {
-    followersArray.push(e);
-  });
-  console.log(followersArray[0]);
-  console.log(followersArray);
-  const myData = createCard(response.data);
-  entryPointInHTML.appendChild(myData);
-}); 
+// getFollowers.then(response => {
+//   const fArray = response.data;
+//   fArray.forEach(e => {
+//     followersArray.push(e);
+//   });
+
+//   console.log(followersArray[0]);
+//   console.log(followersArray);
+//   const myData = createCard(response.data);
+//   entryPointInHTML.appendChild(myData);
+// }); 
 
 followersArray.map(element => {
   axios
